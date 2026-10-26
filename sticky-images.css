@@ -1,0 +1,18 @@
+/* Только index.html. Общие стили и юридические страницы не меняются. */
+:root{--sticky-header-height:96px}
+.sticky-header-slot{height:var(--sticky-header-height)}
+.sticky-header-bar{position:fixed;top:var(--sticky-header-top,0px);left:0;right:0;z-index:40;color:#fff;background:transparent;transition:background-color .18s,box-shadow .18s}
+.sticky-header-bar>.shell{position:relative}
+.sticky-header-bar.is-scrolled,.sticky-header-bar:has(.nav-links.open){background:#131b20;box-shadow:0 5px 20px #080f1522}
+.sticky-header-bar.is-scrolled{border-bottom:1px solid #ffffff1a}
+body.has-sticky-header{--anchor-gap:16px}
+html:has(body.has-sticky-header){scroll-padding-top:var(--sticky-header-height)}
+body.has-sticky-header main>[id]{scroll-margin-top:var(--anchor-gap)}
+body.has-sticky-header :is(a,button,input,select,textarea,summary):focus-visible{scroll-margin-top:calc(var(--sticky-header-height) + var(--anchor-gap))}
+.sticky-header-bar .nav-links{max-height:calc(100dvh - var(--sticky-header-height) - 100px);overflow-y:auto}
+@media(max-width:740px){:root{--sticky-header-height:74px}.sticky-header-bar .nav-links{top:74px}}
+@media(prefers-reduced-motion:reduce){.sticky-header-bar{transition:none}}
+
+/* Сохраняются исходные cover, положение кадра и затемняющие градиенты. */
+.hero{background-image:url('assets/v3-quality/hero-laser-2560.webp');background-image:image-set(url('assets/v3-quality/hero-laser-1600.webp') 1x,url('assets/v3-quality/hero-laser-2560.webp') 2x)}
+@media(min-width:1601px){.hero{background-image:url('assets/v3-quality/hero-laser-2560.webp')}}

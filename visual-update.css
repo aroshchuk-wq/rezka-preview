@@ -1,0 +1,10 @@
+/* Только текущая главная: восстановлен прежний кадр, все градиенты — в v3.css. */
+.home-page .hero{background-image:url('assets/v3/hero-cnc-concept.jpg')}
+.home-page .service-card{position:relative;transition:box-shadow .2s,border-color .2s}
+.home-page .service-card .round-link:after{content:'';position:absolute;inset:0;z-index:2}
+.home-page .service-card:hover{border-color:#a8b4ae;box-shadow:0 10px 26px #15251b12}
+.home-page .service-card:focus-within{outline:2px solid var(--orange);outline-offset:4px}
+.home-page .service-card:hover .round-link{background:var(--orange);border-color:var(--orange)}
+.service-photo-credit{font-size:10px;line-height:1.7;color:var(--sub);margin:24px 0 0;max-width:820px}
+.service-photo-credit a{text-underline-offset:3px}
+@media(prefers-reduced-motion:reduce){.home-page .service-card{transition:none}}
