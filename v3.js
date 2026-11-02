@@ -74,8 +74,10 @@ document.querySelectorAll('.service-card .round-link').forEach((link, index) => 
   link.addEventListener('click', () => { form.elements.type.value = serviceTypes[index]; });
 });
 
-// Прототип не отправляет данные ни по кнопке, ни по Enter в поле.
-form.addEventListener('submit', event => event.preventDefault());
+// Без подтверждённой готовности серверного обработчика прототип ничего не отправляет.
+form.addEventListener('submit', event => {
+  if (form.dataset.serverReady !== 'true') event.preventDefault();
+});
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
   if (!quickPanel.hidden) setQuickContact(false, true);

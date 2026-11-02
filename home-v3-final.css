@@ -1,0 +1,48 @@
+/* Финальные правки только index.html. Внутренние страницы используют прежние стили. */
+body.home-page{--orange:#F26A28;--home-hero-image:url('assets/hero-flatbed-leather.webp')}
+/* После утверждения фото iECHO BK3 достаточно изменить только путь выше. */
+.home-page .hero{background-image:var(--home-hero-image)}
+.home-page .service-photo-slot{display:grid;place-items:center;background:#dfe3e0}
+.home-page .service-photo-slot>span{font-size:12px;color:var(--sub)}
+.home-page .step .index{font-size:64px;line-height:1;font-weight:800;letter-spacing:-.045em;color:var(--orange)}
+.home-page .step:after{content:none}
+.home-page .contact-methods[hidden]{display:none!important}
+.home-page .form-direct-contacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:30px}
+.home-page .direct-contact{display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:94px;padding:22px;border:1px solid #dce4df;border-radius:9px;background:#f7f8f6;color:#233039;text-decoration:none;min-width:0}
+.home-page .direct-contact>span{font-size:12px;color:var(--sub)}
+.home-page .direct-contact>strong{font-size:20px;line-height:1.4;letter-spacing:-.025em;overflow-wrap:anywhere}
+.home-page .direct-contact:hover{border-color:var(--orange)}
+.home-page .form-note{line-height:1.7}
+.home-page .quick-dot.email{background:#131B20;border:1px solid #586970}
+.home-page .production-contacts{background:#fff;padding:100px 0}
+.home-page .production-contacts .section-top{display:block;margin-bottom:48px}
+.home-page .production-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:64px;align-items:start}
+.home-page .production-details{min-width:0}
+.home-page .production-direct{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:35px}
+.home-page .production-direct a{font-size:clamp(25px,2.7vw,39px);line-height:1.25;font-weight:700;letter-spacing:-.04em;text-decoration:none;overflow-wrap:anywhere;min-height:44px;padding:3px 0}
+.home-page .production-direct a:hover{color:var(--orange)}
+.home-page .production-details dl{margin:0;display:grid;gap:22px}
+.home-page .production-details dt{font-size:12px;line-height:1.5;color:var(--sub);margin-bottom:6px}
+.home-page .production-details dd{margin:0;font-size:17px;line-height:1.65;color:var(--ink)}
+.home-page .production-details address{font-style:normal}
+.home-page .production-map{min-width:0}
+.home-page .production-map iframe{display:block;width:100%;height:500px;border:1px solid var(--line);border-radius:10px;background:var(--ground)}
+.home-page .production-map-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:18px}
+.home-page .production-map-links a{font-size:12px;line-height:1.7;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px;text-decoration-color:#c1c9c4}
+.home-page .production-route-modes{font-size:11px;line-height:1.7;color:var(--sub);margin:0}
+.home-page .footer-contacts a{text-underline-offset:4px;text-decoration:none}
+@media(max-width:1100px){.home-page .production-grid{gap:32px}.home-page .direct-contact>strong{font-size:18px}}
+@media(max-width:767px){
+ .home-page .step{padding-left:80px;min-height:90px}
+ .home-page .step .index{position:absolute;left:0;top:0;font-size:52px}
+ .home-page .step:before{content:none}
+ .home-page .production-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+ .home-page .production-contacts{padding:80px 0}
+ .home-page .production-contacts .section-top{margin-bottom:36px}
+ .home-page .production-contacts h2{font-size:clamp(34px,8.5vw,52px)}
+ .home-page .production-direct a{font-size:30px}
+ .home-page .form-direct-contacts{grid-template-columns:minmax(0,1fr);gap:12px}
+ .home-page .direct-contact{padding:20px;min-height:88px}
+ .home-page .direct-contact>strong{font-size:21px}
+ .home-page .production-map iframe{height:500px}
+}

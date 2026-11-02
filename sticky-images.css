@@ -14,5 +14,5 @@ body.has-sticky-header :is(a,button,input,select,textarea,summary):focus-visible
 @media(prefers-reduced-motion:reduce){.sticky-header-bar{transition:none}}
 
 /* Сохраняются исходные cover, положение кадра и затемняющие градиенты. */
-.hero{background-image:url('assets/v3-quality/hero-laser-2560.webp');background-image:image-set(url('assets/v3-quality/hero-laser-1600.webp') 1x,url('assets/v3-quality/hero-laser-2560.webp') 2x)}
-@media(min-width:1601px){.hero{background-image:url('assets/v3-quality/hero-laser-2560.webp')}}
+.hero{background-image:url('assets/hero-flatbed-leather.webp');background-image:image-set(url('assets/hero-flatbed-leather.webp') 1x,url('assets/hero-flatbed-leather.webp') 2x)}
+@media(min-width:1601px){.hero{background-image:url('assets/hero-flatbed-leather.webp')}}
