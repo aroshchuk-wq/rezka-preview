@@ -19,6 +19,10 @@
 :is(.home-page,.technology-page) .footer-contacts a{text-underline-offset:4px;text-decoration:none}
 
 :is(.home-page,.technology-page) .quick-dot.email{background:#131B20;border:1px solid #586970}
+:is(.home-page,.technology-page) .quick-dot svg{display:block;width:32px;height:32px}
+:is(.home-page,.technology-page) .quick-panel:not([hidden]){animation:quick-panel-in .16s ease-out;transform-origin:bottom right}
+@keyframes quick-panel-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){:is(.home-page,.technology-page) .quick-panel:not([hidden]){animation:none}}
 .production-address-card{min-width:0;border:1px solid var(--line);border-radius:10px;background:var(--ground);padding:40px}
 .production-address-card h3{font-size:28px;line-height:1.25;margin:28px 0 20px}
 .production-address-card address{font-style:normal;font-size:clamp(23px,2.2vw,32px);line-height:1.5;letter-spacing:-.025em;overflow-wrap:anywhere}
