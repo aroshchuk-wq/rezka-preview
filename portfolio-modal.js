@@ -21,8 +21,8 @@
   dialog.setAttribute('aria-labelledby', 'pf-title');
   // Только постоянная разметка компонента; данные ниже вставляются через textContent.
   dialog.innerHTML = `<header class="pf-toolbar"><span class="pf-toolbar-label">Просмотр примера</span><button class="pf-close" type="button" aria-label="Закрыть пример">×</button></header>
-    <div class="pf-layout"><section class="pf-media" aria-label="Изображения проекта"><p class="pf-gallery-note"></p><div class="pf-track" tabindex="0" role="region" aria-label="Галерея изображений, используйте стрелки влево и вправо"></div><div class="pf-navigation"><span class="pf-count" role="status" aria-live="polite" aria-atomic="true"></span><div class="pf-arrows"><button type="button" class="pf-arrow pf-prev" aria-label="Предыдущее изображение">←</button><button type="button" class="pf-arrow pf-next" aria-label="Следующее изображение">→</button></div></div><div class="pf-thumbs" role="group" aria-label="Выбор изображения"></div><div class="pf-empty" hidden><strong>Фотографии ещё не переданы</strong><p>Здесь появятся подтверждённые изображения проекта. Сейчас это демонстрационный пример интерфейса.</p></div></section>
-    <section class="pf-info" aria-label="Описание проекта"><span class="pf-demo-label">Демонстрационный пример</span><h2 id="pf-title"></h2><p class="pf-tech"></p><p class="pf-warning" id="pf-warning">Это локальная демонстрация интерфейса, а не выполненный заказ i-cut.pro. Реальные данные проекта пока не предоставлены.</p><div class="pf-task-block"><h3>Описание задачи</h3><p class="pf-description" id="pf-description"></p></div><div class="pf-solution-block" hidden><h3>Выполненные работы</h3><p class="pf-solution"></p></div><dl class="pf-facts"></dl><button class="btn btn-orange pf-similar" type="button">Рассчитать похожий заказ <span aria-hidden="true">↗</span></button><p class="pf-disclaimer">Переход к форме расчёта. Отправка заявки пока не подключена.</p></section></div>`;
+    <div class="pf-layout"><section class="pf-media" aria-label="Изображения проекта"><p class="pf-gallery-note"></p><div class="pf-track" tabindex="0" role="region" aria-label="Галерея изображений, используйте стрелки влево и вправо"></div><div class="pf-navigation"><span class="pf-count" role="status" aria-live="polite" aria-atomic="true"></span><div class="pf-arrows"><button type="button" class="pf-arrow pf-prev" aria-label="Предыдущее изображение">←</button><button type="button" class="pf-arrow pf-next" aria-label="Следующее изображение">→</button></div></div><div class="pf-thumbs" role="group" aria-label="Выбор изображения"></div><div class="pf-empty" hidden><strong>Контур изделия</strong><p>Форму, размеры и материал уточним по вашему макету или описанию.</p></div></section>
+    <section class="pf-info" aria-label="Описание проекта"><h2 id="pf-title"></h2><p class="pf-tech"></p><div class="pf-task-block"><h3>Вариант изготовления</h3><p class="pf-description" id="pf-description"></p></div><div class="pf-solution-block" hidden><h3>Выполненные работы</h3><p class="pf-solution"></p></div><dl class="pf-facts"></dl><button class="btn btn-orange pf-similar" type="button">Рассчитать похожий заказ <span aria-hidden="true">↗</span></button></section></div>`;
   document.body.append(dialog);
   const $ = selector => dialog.querySelector(selector);
   const track = $('.pf-track'), thumbs = $('.pf-thumbs'), previous = $('.pf-prev'), next = $('.pf-next');
@@ -60,8 +60,7 @@
     current = project; index = 0;
     $('#pf-title').textContent = project.title;
     $('.pf-tech').textContent = labels[project.technology];
-    $('.pf-demo-label').hidden = !project.isDemo; $('.pf-warning').hidden = !project.isDemo;
-    dialog.setAttribute('aria-describedby', project.isDemo ? 'pf-warning' : 'pf-description');
+    dialog.setAttribute('aria-describedby', 'pf-description');
     $('.pf-description').textContent = project.description || '';
     $('.pf-task-block').hidden = !present(project.description);
     const confirmed = project.confirmed === true && project.isDemo !== true;
@@ -82,7 +81,7 @@
       const figure = document.createElement('figure'), image = document.createElement('img'), caption = document.createElement('figcaption');
       figure.className = 'pf-slide'; image.src = item.src; image.alt = item.alt || `${project.title}: изображение ${i + 1}`;
       image.decoding = 'async'; image.draggable = false;
-      caption.textContent = project.isDemo ? `Условная схема ${i + 1}. Не фотография выполненного заказа.` : `${i + 1} / ${images.length}`;
+      caption.textContent = project.isDemo ? `Схема изделия / ${String(i + 1).padStart(2, '0')}` : `${i + 1} / ${images.length}`;
       figure.append(image, caption); track.append(figure);
       const button = document.createElement('button'), thumb = document.createElement('img');
       button.type = 'button'; button.className = 'pf-thumb'; button.setAttribute('aria-label', `Показать изображение ${i + 1}`);
@@ -91,9 +90,9 @@
     track.hidden = !images.length; $('.pf-navigation').hidden = !images.length; thumbs.hidden = !images.length;
     $('.pf-arrows').hidden = images.length < 2; $('.pf-empty').hidden = images.length > 0;
     $('.pf-empty p').textContent = project.isDemo
-      ? 'Здесь появятся подтверждённые изображения проекта. Сейчас это демонстрационный пример интерфейса.'
-      : 'Изображения этого проекта пока не добавлены.';
-    $('.pf-gallery-note').textContent = project.isDemo ? 'Условные схемы для проверки галереи. Фотографии реальных работ ещё не получены.' : 'Фотографии проекта';
+      ? 'Форму, размеры и материал уточним по вашему макету или описанию.'
+      : 'Уточните детали изделия при обращении.';
+    $('.pf-gallery-note').textContent = project.isDemo ? 'Варианты формы и раскладки — схемы изделий' : 'Фотографии проекта';
   }
   function open(project, button) {
     if (dialog.open) return;
